@@ -1,0 +1,7 @@
+/tmp/tmp1ao3vmpw/dolfin_subdomain_4f15b7c13d5cc61ffde117de375b826f.cpp: In member function ‘virtual bool dolfin::dolfin_subdomain_4f15b7c13d5cc61ffde117de375b826f::inside(Eigen::Ref<const Eigen::Matrix<double, -1, 1> >, bool) const’:
+/tmp/tmp1ao3vmpw/dolfin_subdomain_4f15b7c13d5cc61ffde117de375b826f.cpp:63:28: error: ‘W’ was not declared in this scope
+   63 |          return near(x[0], W/2) && near(x[1], H) ;
+      |                            ^
+/tmp/tmp1ao3vmpw/dolfin_subdomain_4f15b7c13d5cc61ffde117de375b826f.cpp:63:47: error: ‘H’ was not declared in this scope
+   63 |          return near(x[0], W/2) && near(x[1], H) ;
+      |                                               ^
