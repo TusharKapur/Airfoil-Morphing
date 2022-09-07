@@ -1,0 +1,11 @@
+#!/bin/sh
+# 
+
+extrudeMesh
+//rm -f 0/*
+//cp 0.org/* 0/
+changeDictionary
+checkMesh -allGeometry -latestTime
+simpleFoam | tee logSimpleFoam 
+gnuplot Coefficients.GNUPLOT
+gnuplot Residuals_png.GNUPLOT

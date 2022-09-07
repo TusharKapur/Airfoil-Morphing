@@ -1,0 +1,91 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+x0 0.;
+x1 3.;
+
+y0 0.;
+y1 1.;
+
+z0 0;
+z1 0.1;
+
+vertices
+(
+    ($x0 $y0 $z0 )         // 0
+    ($x1 $y0 $z0 )         // 1
+    ($x1 $y1 $z0 )         // 2
+    ($x0 $y1 $z0 )         // 3
+    ($x0 $y0 $z1 )         // 4
+    ($x1 $y0 $z1 )         // 5
+    ($x1 $y1 $z1 )         // 6
+    ($x0 $y1 $z1 )         // 7
+);
+
+// Grading
+h1 30;
+v1 15;
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) ($h1 $v1 1) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    pipeBoundary
+    {
+        type wall;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (2 6 5 1)
+        );
+    }
+
+    fluidBoundary
+    {
+        type symmetryPlane;
+        faces
+        (
+            (1 5 4 0)
+        );
+    }
+
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);
+
+// ************************************************************************* //

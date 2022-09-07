@@ -1,0 +1,35 @@
+[33mcommit 88bce199f4c7fc07e6e6d5163d439da56c4b0abd[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Sebastian Obermeier <s.obermeier@tum.de>
+Date:   Wed Jun 30 15:53:01 2021 +0200
+
+    simulation inputs aufgeräumt
+
+[33mcommit 1d82f71afa985ade2b3b5944b1a412641b2916f5[m
+Author: Sebastian Obermeier <s.obermeier@tum.de>
+Date:   Tue Jun 29 15:10:50 2021 +0200
+
+    delete old README and add Solver directory
+
+[33mcommit 5e143fe27657d00adc1cf3faa0d85302aef44bd8[m
+Author: Sebastian Obermeier <s.obermeier@tum.de>
+Date:   Tue Jun 29 14:49:44 2021 +0200
+
+    place directories one level higher
+
+[33mcommit a3a0b7ba75bc3dfac9ce159da8574203b6733e62[m
+Author: Sebastian Obermeier <s.obermeier@tum.de>
+Date:   Tue Jun 29 14:47:08 2021 +0200
+
+    add existing Matlab_Toolchain
+
+[33mcommit 3745f7397870ffd66b6ecd96d4524196969e4a8b[m[33m ([m[1;32mmain[m[33m)[m
+Author: Sebastian Obermeier <s.obermeier@tum.de>
+Date:   Tue Jun 29 14:04:30 2021 +0200
+
+    update README
+
+[33mcommit 9dff08ab8ab3165cc73a1e21606993afc4e29fb6[m
+Author: Sebastian Obermeier <s.obermeier@tum.de>
+Date:   Tue Jun 29 12:58:10 2021 +0200
+
+    add README
