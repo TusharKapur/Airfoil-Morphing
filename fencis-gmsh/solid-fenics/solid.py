@@ -9,6 +9,20 @@ import matplotlib.pyplot as plt
 from fenicsprecice import Adapter
 from enum import Enum
 
+import meshio
+
+geometry = meshio.read("mesh.msh")
+meshio.write("mesh.xdmf", meshio.Mesh(points=geometry.points, cells={"triangle": geometry.cells["triangle"]}))
+meshio.write("mf.xdmf", meshio.Mesh(points=geometry.points, cells={"line": geometry.cells["line"]},
+                                    cell_data={"line": {"name_to_read": geometry.cell_data["line"]["gmsh:physical"]}}))
+#Load mesh and subdomains
+mesh = Mesh()
+with XDMFFile("mesh.xdmf") as infile:
+    infile.read(mesh)
+mvc = MeshValueCollection("size_t", mesh, 1)
+with XDMFFile("mf.xdmf") as infile:
+    infile.read(mvc, "name_to_read")
+boundary_markers =MeshFunction("size_t",mesh, mvc)
 
 # define the two kinds of boundary: clamped and coupling Neumann Boundary
 def clamped_boundary(x, on_boundary):
@@ -50,9 +64,9 @@ Right: 4
 Beam: 5
 '''
 
-xml_file = "mesh.xml"
-mesh = Mesh(xml_file)
-fd = MeshFunction('size_t', mesh, "mesh_facet_region.xml");
+# xml_file = "mesh.xml"
+# mesh = Mesh(xml_file)
+# fd = MeshFunction('size_t', mesh, "mesh_facet_region.xml");
 
 h = Constant(H / n_y_Direction)
 
