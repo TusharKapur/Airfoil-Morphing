@@ -1,8 +1,0 @@
-1. Changed <filter type="QR2" limit="1e-2" /> to <filter type="QR2" limit="1e-3" />
-Warning: Subvector zero dissappears. Error still remains.
-
-2. Reduce rho and/or E in solid.py
-
-3. ERROR:  Send using sockets failed with system error: write: Broken pipe
-
-
