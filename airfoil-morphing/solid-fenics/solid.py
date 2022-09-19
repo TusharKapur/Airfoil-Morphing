@@ -27,18 +27,18 @@ from enum import Enum
 
 
 # define the two kinds of boundary: clamped and coupling Neumann Boundary
-# def clamped_boundary(x, on_boundary):
-#     return on_boundary and abs(x[0]) < 0.2
+def clamped_boundary(x, on_boundary):
+    return on_boundary and abs(x[0]) < 0.2
 
 # def clamped_boundary(x, on_boundary):
 #     return on_boundary and (abs(x[1]) < tol) and (abs(x[0])<tol)
 
-# def neumann_boundary(x, on_boundary):
-#     """
-#     determines whether a node is on the coupling boundary
+def neumann_boundary(x, on_boundary):
+    """
+    determines whether a node is on the coupling boundary
 
-#     """
-#     return on_boundary and (abs(x[0]) < tol)
+    """
+    return on_boundary and (abs(x[0]) > 0.2)
 
 
 # Geometry and material properties
@@ -85,13 +85,13 @@ a_n = Function(V)
 f_N_function = interpolate(Expression(("1", "0"), degree=1), V)
 u_function = interpolate(Expression(("0", "0"), degree=1), V)
 
-# coupling_boundary = AutoSubDomain(neumann_boundary)
-# fixed_boundary = AutoSubDomain(clamped_boundary)
+coupling_boundary = AutoSubDomain(neumann_boundary)
+fixed_boundary = AutoSubDomain(clamped_boundary)
 
-fixed_boundary=AutoSubDomain(lambda x: (x[0] < 0.2))
-coupling_boundary=AutoSubDomain(lambda x: (x[0] > 0.2))
-fixed_boundary.mark(boundaries, 1)
-coupling_boundary.mark(boundaries, 2)
+# fixed_boundary=AutoSubDomain(lambda x: (x[0] < 0.2))
+# coupling_boundary=AutoSubDomain(lambda x: (x[0] > 0.2))
+# fixed_boundary.mark(boundaries, 1)
+# coupling_boundary.mark(boundaries, 2)
 
 precice = Adapter(adapter_config_filename="precice-adapter-config-fsi-s.json")
 
@@ -217,7 +217,7 @@ while precice.is_coupling_ongoing():
     read_data = precice.read_data()
 
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    # read_data[(0.8956794230370102, -0.006480987754391207)][1] += -10000.0
+    read_data[(0.8956794230370102, -0.006480987754391207)][1] += -1000.0
     # print(read_data)
 
     # Update the point sources on the coupling boundary with the new read data

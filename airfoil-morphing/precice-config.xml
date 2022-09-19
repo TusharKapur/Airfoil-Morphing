@@ -26,12 +26,12 @@
       <use-mesh name="Solid-Mesh" from="Solid" />
       <write-data name="Force" mesh="Fluid-Mesh" />
       <read-data name="Displacement" mesh="Fluid-Mesh" />
-      <mapping:rbf-thin-plate-splines
+      <mapping:linear-cell-interpolation
         direction="write"
         from="Fluid-Mesh"
         to="Solid-Mesh"
         constraint="conservative" />
-      <mapping:rbf-thin-plate-splines
+      <mapping:linear-cell-interpolation
         direction="read"
         from="Solid-Mesh"
         to="Fluid-Mesh"
@@ -47,7 +47,16 @@
 
     <m2n:sockets from="Fluid" to="Solid" exchange-directory=".." />
 
-    <coupling-scheme:parallel-implicit>
+    <coupling-scheme:serial-explicit>
+    <participants first="Fluid" second="Solid" />
+    <max-time-windows value="200"/>
+    <time-window-size value="1e-3"/>
+    <exchange data="Force" mesh="Solid-Mesh" from="Fluid" to="Solid" />
+    <exchange data="Displacement" mesh="Solid-Mesh" from="Solid" to="Fluid" />
+    </coupling-scheme:serial-explicit>
+
+
+    <!-- <coupling-scheme:parallel-implicit>
       <time-window-size value="0.01" />
       <max-time value="5" />
       <participants first="Fluid" second="Solid" />
@@ -65,6 +74,7 @@
         <max-used-iterations value="100" />
         <time-windows-reused value="15" />
       </acceleration:IQN-ILS>
-    </coupling-scheme:parallel-implicit>
+    </coupling-scheme:parallel-implicit> -->
+
   </solver-interface>
 </precice-configuration>
