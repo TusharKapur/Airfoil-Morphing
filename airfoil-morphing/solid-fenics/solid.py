@@ -217,7 +217,7 @@ while precice.is_coupling_ongoing():
     read_data = precice.read_data()
 
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    read_data[(0.8956794230370102, -0.006480987754391207)][1] += -1000.0
+    read_data[(0.8956794230370102, -0.006480987754391207)][1] += -100.0
     # print(read_data)
 
     # Update the point sources on the coupling boundary with the new read data

@@ -49,7 +49,7 @@
 
     <coupling-scheme:serial-explicit>
     <participants first="Fluid" second="Solid" />
-    <max-time-windows value="200"/>
+    <max-time-windows value="1000"/>
     <time-window-size value="1e-3"/>
     <exchange data="Force" mesh="Solid-Mesh" from="Fluid" to="Solid" />
     <exchange data="Displacement" mesh="Solid-Mesh" from="Solid" to="Fluid" />

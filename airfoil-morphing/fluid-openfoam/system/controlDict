@@ -19,6 +19,8 @@ endTime         10;
 
 deltaT          0.01;
 
+adjustTimeStep  yes;
+
 writeControl    adjustableRunTime;
 
 writeInterval   0.01;
