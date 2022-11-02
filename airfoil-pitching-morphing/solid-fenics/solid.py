@@ -217,7 +217,7 @@ while precice.is_coupling_ongoing():
     read_data = precice.read_data()
 
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    read_data[(0.9581194569600091, 0.005379413219879119)][1] += -100.0
+    read_data[(0.9581194569600091, 0.005379413219879119)][1] += -1000.0
     # print(read_data)
 
     # Update the point sources on the coupling boundary with the new read data
@@ -245,6 +245,7 @@ while precice.is_coupling_ongoing():
     dt = Constant(np.min([precice_dt, fenics_dt]))
 
     # Write new displacements to preCICE
+    # print(u_np1.vector())
     precice.write_data(u_np1)
 
     # Call to advance coupling, also returns the optimum time step value

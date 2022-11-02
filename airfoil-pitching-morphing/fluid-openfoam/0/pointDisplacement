@@ -26,8 +26,16 @@ boundaryField
 
     flap
     {
-        type            fixedValue;
-        value           $internalField;
+        // type            fixedValue;
+        // value           $internalField;
+        type            angularOscillatingDisplacement;
+        value		uniform (0 0 0);
+        // value           $internalField;
+        axis		(0 0 1);
+        origin		(0 0 0);
+        angle0		0;
+        amplitude	0.2;
+        omega		10;
     }
     
     upperWall
