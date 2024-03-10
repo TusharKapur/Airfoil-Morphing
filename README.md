@@ -1,7 +1,3 @@
-# miscellaneous
-
-
-
 ## About
 
-A collection of case files including modified examples for trial and error. Not to be considered for the final simulation(s).
+Fluid-structure interaction simulation of airfoil morphing using the multiphysics library preCICE.
